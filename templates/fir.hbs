@@ -1,0 +1,50 @@
+{{#if details.results}}
+  <h1 class="p-title">
+      Artifacts
+  </h1>
+{{/if}}
+{{#each details.results as |artifact artifactIndex|}}
+  {{#if (gt artifactIndex 0)}}
+    <hr>
+  {{/if}}
+  <h1 class="p-title">{{fa-icon "box" fixedWidth=true}}  <a class="p-link" href="{{artifact.link}}">{{artifact.value}} {{fa-icon "external-link-square" class="external-link-icon"}}</a></h1>
+  <div>
+    <span class="p-key">FIR Artifact Type: </span>
+    <span class="p-value">{{artifact.type}}</span>
+  </div>
+
+  {{#each artifact.incidents as |incident index|}}
+    <div class="incident-container">
+       <h1 class="p-title">{{fa-icon "fire" fixedWidth=true}} <a class="p-link" href="{{incident.link}}">{{incident.subject}} {{fa-icon "external-link-square" class="external-link-icon"}}</a></h1>
+      <div>
+        <span class="p-key">Severity: </span>
+        <span class="p-value severity {{concat "severity-" incident.severity}}">{{incident.severity}}</span>
+      </div>
+      <div>
+        <span class="p-key">Is Incident: </span>
+        <span class="p-value">{{incident.is_incident}}</span>
+      </div>
+      <div>
+        <span class="p-key">Is Major: </span>
+        <span class="p-value">{{incident.is_major}}</span>
+      </div>
+      <div>
+        <span class="p-key">Status: </span>
+        <span class="p-value">{{incident.statusDisplay}}</span>
+      </div>
+      <div>
+        <span class="p-key">Confidentiality: </span>
+        <span class="p-value">{{incident.confidentialityDisplay}}</span>
+      </div>
+      <div>
+        <span class="p-key">Date: </span>
+        <span class="p-value">{{incident.date}}</span>
+      </div>
+      <div>
+        <span class="p-key">Description:</span>
+      </div>
+      <pre>{{incident.description}}</pre>
+    </div>
+  {{/each}}
+
+{{/each}}
