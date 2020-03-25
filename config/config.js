@@ -1,9 +1,9 @@
 module.exports = {
-  name: 'Fast Incident Response (FIR) Platform Search',
+  name: 'Fast Incident Response (FIR) Search',
   acronym: 'FIR',
-  description: 'Searches FIR for artifacts contained within cybersecurity incidents.',
+  description: 'Searches Fast Incident Response (FIR) for artifacts contained within cybersecurity incidents.',
   entityTypes: ['ipv4', 'hash', 'domain', 'email'],
-  logging: { level: 'trace' },
+  logging: { level: 'info' },
   block: {
     component: {
       file: './components/fir.js'
