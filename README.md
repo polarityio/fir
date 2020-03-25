@@ -4,6 +4,8 @@ The FIR (Fast Incident Response) integration searches the FIR cybersecurity inci
 
 To learn more about FIR, please visit the [official website](https://github.com/certsocietegenerale/FIR).
 
+![overlay](./assets/overlay.png)  
+
 > Note that this integration is currently in Beta.
 
 ## Configuring FIR
