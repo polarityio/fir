@@ -75,9 +75,9 @@ module.exports = {
     },
     {
       key: 'domainBlacklistRegex',
-      name: 'Domain Black List Regex',
+      name: 'Domain Blacklist Regex',
       description:
-        'Domains that match the given regex will not be looked up (if blank, no domains will be black listed)',
+        'Domains that match the given regex will not be looked up (if blank, no domains will be blacklisted)',
       default: '',
       type: 'text',
       userCanEdit: false,
@@ -85,9 +85,9 @@ module.exports = {
     },
     {
       key: 'ipBlacklistRegex',
-      name: 'IP Black List Regex',
+      name: 'IP Blacklist Regex',
       description:
-        'IPs that match the given regex will not be looked up (if blank, no IPs will be black listed)',
+        'IPs that match the given regex will not be looked up (if blank, no IPs will be blacklisted)',
       default: '',
       type: 'text',
       userCanEdit: false,

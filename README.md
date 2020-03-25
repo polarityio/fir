@@ -36,6 +36,18 @@ The URL for your FIR instance to include the schema (i.e., https://) and port (e
 
 A valid REST API Token for your FIR instance.
 
+### Blacklist Indicators
+
+Comma delimited list of indicators you do not want looked up.
+
+### Domain Blacklist Regex
+
+Domains that match the given regex will not be looked up (if blank, no domains will be blacklisted)
+
+### IP Blacklist Regex
+
+IPs that match the given regex will not be looked up (if blank, no IPs will be black listed)
+
 ## Installation Instructions
 
 Installation instructions for integrations are provided on the [PolarityIO GitHub Page](https://polarityio.github.io/).
