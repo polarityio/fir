@@ -8,8 +8,8 @@ let Logger;
 let requestWithDefaults;
 let previousDomainRegexAsString = '';
 let previousIpRegexAsString = '';
-let domainBlacklistRegex = null;
-let ipBlacklistRegex = null;
+let domainBlocklistRegex = null;
+let ipBlocklistRegex = null;
 const IGNORED_IPS = new Set(['127.0.0.1', '255.255.255.255', '0.0.0.0']);
 
 const MAX_DOMAIN_LABEL_LENGTH = 63;
@@ -55,49 +55,49 @@ function startup(logger) {
   requestWithDefaults = request.defaults(defaults);
 }
 
-function _setupRegexBlacklists(options) {
-  if (options.domainBlacklistRegex !== previousDomainRegexAsString && options.domainBlacklistRegex.length === 0) {
-    Logger.debug('Removing Domain Blacklist Regex Filtering');
+function _setupRegexBlocklists(options) {
+  if (options.domainBlocklistRegex !== previousDomainRegexAsString && options.domainBlocklistRegex.length === 0) {
+    Logger.debug('Removing Domain Blocklist Regex Filtering');
     previousDomainRegexAsString = '';
-    domainBlacklistRegex = null;
+    domainBlocklistRegex = null;
   } else {
-    if (options.domainBlacklistRegex !== previousDomainRegexAsString) {
-      previousDomainRegexAsString = options.domainBlacklistRegex;
-      Logger.debug({ domainBlacklistRegex: previousDomainRegexAsString }, 'Modifying Domain Blacklist Regex');
-      domainBlacklistRegex = new RegExp(options.domainBlacklistRegex, 'i');
+    if (options.domainBlocklistRegex !== previousDomainRegexAsString) {
+      previousDomainRegexAsString = options.domainBlocklistRegex;
+      Logger.debug({ domainBlocklistRegex: previousDomainRegexAsString }, 'Modifying Domain Blocklist Regex');
+      domainBlocklistRegex = new RegExp(options.domainBlocklistRegex, 'i');
     }
   }
 
-  if (options.ipBlacklistRegex !== previousIpRegexAsString && options.ipBlacklistRegex.length === 0) {
-    Logger.debug('Removing IP Blacklist Regex Filtering');
+  if (options.ipBlocklistRegex !== previousIpRegexAsString && options.ipBlocklistRegex.length === 0) {
+    Logger.debug('Removing IP Blocklist Regex Filtering');
     previousIpRegexAsString = '';
-    ipBlacklistRegex = null;
+    ipBlocklistRegex = null;
   } else {
-    if (options.ipBlacklistRegex !== previousIpRegexAsString) {
-      previousIpRegexAsString = options.ipBlacklistRegex;
-      Logger.debug({ ipBlacklistRegex: previousIpRegexAsString }, 'Modifying IP Blacklist Regex');
-      ipBlacklistRegex = new RegExp(options.ipBlacklistRegex, 'i');
+    if (options.ipBlocklistRegex !== previousIpRegexAsString) {
+      previousIpRegexAsString = options.ipBlocklistRegex;
+      Logger.debug({ ipBlocklistRegex: previousIpRegexAsString }, 'Modifying IP Blocklist Regex');
+      ipBlocklistRegex = new RegExp(options.ipBlocklistRegex, 'i');
     }
   }
 }
 
-function _isEntityBlacklisted(entity, { blacklist }) {
-  Logger.trace({ blacklist }, 'Blacklist Values');
+function _isEntityBlocklisted(entity, { blocklist }) {
+  Logger.trace({ blocklist }, 'Blocklist Values');
 
-  const entityIsBlacklisted = _.includes(blacklist, entity.value.toLowerCase());
+  const entityIsBlocklisted = _.includes(blocklist, entity.value.toLowerCase());
 
-  const ipIsBlacklisted =
-    entity.isIP && !entity.isPrivateIP && ipBlacklistRegex !== null && ipBlacklistRegex.test(entity.value);
-  if (ipIsBlacklisted) Logger.debug({ ip: entity.value }, 'Blocked BlackListed IP Lookup');
+  const ipIsBlocklisted =
+    entity.isIP && !entity.isPrivateIP && ipBlocklistRegex !== null && ipBlocklistRegex.test(entity.value);
+  if (ipIsBlocklisted) Logger.debug({ ip: entity.value }, 'Blocked BlockListed IP Lookup');
 
-  const domainIsBlacklisted =
-    entity.isDomain && domainBlacklistRegex !== null && domainBlacklistRegex.test(entity.value);
-  if (domainIsBlacklisted) Logger.debug({ domain: entity.value }, 'Blocked BlackListed Domain Lookup');
+  const domainIsBlocklisted =
+    entity.isDomain && domainBlocklistRegex !== null && domainBlocklistRegex.test(entity.value);
+  if (domainIsBlocklisted) Logger.debug({ domain: entity.value }, 'Blocked BlockListed Domain Lookup');
 
-  return entityIsBlacklisted || ipIsBlacklisted || domainIsBlacklisted;
+  return entityIsBlocklisted || ipIsBlocklisted || domainIsBlocklisted;
 }
 
-function _isInvalidEntity(blacklist, entity) {
+function _isInvalidEntity(blocklist, entity) {
   return entity.isIPv4 && IGNORED_IPS.has(entity.value);
 }
 
@@ -113,11 +113,11 @@ function doLookup(entities, options, cb) {
     }
     incidentFields = mappings;
     Logger.info({incidentFields}, 'incidentFields');
-    _setupRegexBlacklists(options);
+    _setupRegexBlocklists(options);
     let url = options.url.endsWith('/') ? options.url : `${options.url}/`;
 
     entities.forEach((entity) => {
-      if (!_isInvalidEntity(options.blacklist, entity) && !_isEntityBlacklisted(entity, options)) {
+      if (!_isInvalidEntity(options.blocklist, entity) && !_isEntityBlocklisted(entity, options)) {
         let requestOptions = {
           method: 'GET',
           headers: {
