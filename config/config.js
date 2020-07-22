@@ -70,7 +70,7 @@ module.exports = {
       description: 'Comma delimited list of indicators you do not want looked up.',
       default: '',
       type: 'text',
-      userCanEdit: true,
+      userCanEdit: false,
       adminOnly: false
     },
     {
@@ -80,7 +80,7 @@ module.exports = {
         'Domains that match the given regex will not be looked up.',
       default: '',
       type: 'text',
-      userCanEdit: true,
+      userCanEdit: false,
       adminOnly: false
     },
     {
@@ -90,7 +90,7 @@ module.exports = {
         'IPs that match the given regex will not be looked up.',
       default: '',
       type: 'text',
-      userCanEdit: true,
+      userCanEdit: false,
       adminOnly: false
     }
   ]
