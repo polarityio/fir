@@ -51,8 +51,8 @@ module.exports = {
         'The URL for your FIR instance to include the schema (i.e., https://) and port (e.g., https://fir:8000) as necessary',
       type: 'text',
       default: '',
-      userCanEdit: false,
-      adminOnly: true
+      userCanEdit: true,
+      adminOnly: false
     },
     {
       key: 'apiKey',
@@ -65,8 +65,8 @@ module.exports = {
       adminOnly: false
     },
     {
-      key: 'blacklist',
-      name: 'Blacklist Indicators',
+      key: 'blocklist',
+      name: 'Ignore Entities',
       description: 'Comma delimited list of indicators you do not want looked up.',
       default: '',
       type: 'text',
@@ -74,20 +74,20 @@ module.exports = {
       adminOnly: false
     },
     {
-      key: 'domainBlacklistRegex',
-      name: 'Domain Blacklist Regex',
+      key: 'domainBlocklistRegex',
+      name: 'Ignore Domain Regex',
       description:
-        'Domains that match the given regex will not be looked up (if blank, no domains will be blacklisted)',
+        'Domains that match the given regex will not be looked up.',
       default: '',
       type: 'text',
       userCanEdit: false,
       adminOnly: false
     },
     {
-      key: 'ipBlacklistRegex',
-      name: 'IP Blacklist Regex',
+      key: 'ipBlocklistRegex',
+      name: 'Ignore IP Regex',
       description:
-        'IPs that match the given regex will not be looked up (if blank, no IPs will be blacklisted)',
+        'IPs that match the given regex will not be looked up.',
       default: '',
       type: 'text',
       userCanEdit: false,

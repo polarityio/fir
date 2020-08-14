@@ -36,17 +36,17 @@ The URL for your FIR instance to include the schema (i.e., https://) and port (e
 
 A valid REST API Token for your FIR instance.
 
-### Blacklist Indicators
+### Ignore Entities
 
 Comma delimited list of indicators you do not want looked up.
 
-### Domain Blacklist Regex
+### Ignore Domain Regex
 
-Domains that match the given regex will not be looked up (if blank, no domains will be blacklisted)
+Domains that match the given regex will not be looked up.
 
-### IP Blacklist Regex
+### Ignore IP Regex
 
-IPs that match the given regex will not be looked up (if blank, no IPs will be black listed)
+IPs that match the given regex will not be looked up.
 
 ## Installation Instructions
 
