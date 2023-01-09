@@ -1,0 +1,80 @@
+{
+  "name": "Fast Incident Response (FIR) Search",
+  "acronym": "FIR",
+  "description": "Searches Fast Incident Response (FIR) for artifacts contained within cybersecurity incidents.",
+  "entityTypes": [
+    "IPv4",
+    "hash",
+    "domain",
+    "email"
+  ],
+  "logging": {
+    "level": "info"
+  },
+  "block": {
+    "component": {
+      "file": "./components/fir.js"
+    },
+    "template": {
+      "file": "./templates/fir.hbs"
+    }
+  },
+  "styles": [
+    "./styles/styles.less"
+  ],
+  "request": {
+    "cert": "",
+    "key": "",
+    "passphrase": "",
+    "ca": "",
+    "proxy": "",
+    "rejectUnauthorized": true
+  },
+  "options": [
+    {
+      "key": "url",
+      "name": "FIR Server URL",
+      "description": "The URL for your FIR instance to include the schema (i.e., https://) and port (e.g., https://fir:8000) as necessary",
+      "type": "text",
+      "default": "",
+      "userCanEdit": true,
+      "adminOnly": false
+    },
+    {
+      "key": "apiKey",
+      "name": "FIR User REST API Token",
+      "description": "The REST API Token used to authenticate to your FIR instance.",
+      "default": "",
+      "type": "password",
+      "userCanEdit": true,
+      "adminOnly": false
+    },
+    {
+      "key": "blocklist",
+      "name": "Ignore Entities",
+      "description": "Comma delimited list of indicators you do not want looked up.",
+      "default": "",
+      "type": "text",
+      "userCanEdit": false,
+      "adminOnly": false
+    },
+    {
+      "key": "domainBlocklistRegex",
+      "name": "Ignore Domain Regex",
+      "description": "Domains that match the given regex will not be looked up.",
+      "default": "",
+      "type": "text",
+      "userCanEdit": false,
+      "adminOnly": false
+    },
+    {
+      "key": "ipBlocklistRegex",
+      "name": "Ignore IP Regex",
+      "description": "IPs that match the given regex will not be looked up.",
+      "default": "",
+      "type": "text",
+      "userCanEdit": false,
+      "adminOnly": false
+    }
+  ]
+}
