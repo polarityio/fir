@@ -3,6 +3,7 @@ module.exports = {
   acronym: 'FIR',
   description: 'Searches Fast Incident Response (FIR) for artifacts contained within cybersecurity incidents.',
   entityTypes: ['ipv4', 'hash', 'domain', 'email'],
+  defaultColor: 'light-purple',
   logging: { level: 'info' },
   block: {
     component: {
@@ -57,8 +58,7 @@ module.exports = {
     {
       key: 'apiKey',
       name: 'FIR User REST API Token',
-      description:
-        'The REST API Token used to authenticate to your FIR instance.',
+      description: 'The REST API Token used to authenticate to your FIR instance.',
       default: '',
       type: 'password',
       userCanEdit: true,
@@ -76,8 +76,7 @@ module.exports = {
     {
       key: 'domainBlocklistRegex',
       name: 'Ignore Domain Regex',
-      description:
-        'Domains that match the given regex will not be looked up.',
+      description: 'Domains that match the given regex will not be looked up.',
       default: '',
       type: 'text',
       userCanEdit: false,
@@ -86,8 +85,7 @@ module.exports = {
     {
       key: 'ipBlocklistRegex',
       name: 'Ignore IP Regex',
-      description:
-        'IPs that match the given regex will not be looked up.',
+      description: 'IPs that match the given regex will not be looked up.',
       default: '',
       type: 'text',
       userCanEdit: false,
