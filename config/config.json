@@ -1,4 +1,5 @@
 {
+  "polarityIntegrationUuid": "d89d78a0-cce1-11ed-aeee-075d3490155d",
   "name": "Fast Incident Response (FIR) Search",
   "acronym": "FIR",
   "description": "Searches Fast Incident Response (FIR) for artifacts contained within cybersecurity incidents.",
