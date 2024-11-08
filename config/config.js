@@ -2,7 +2,7 @@ module.exports = {
   name: 'Fast Incident Response (FIR) Search',
   acronym: 'FIR',
   description: 'Searches Fast Incident Response (FIR) for artifacts contained within cybersecurity incidents.',
-  entityTypes: ['ipv4', 'hash', 'domain', 'email'],
+  entityTypes: ['IPv4', 'MD5', 'SHA1', 'SHA256', 'domain', 'email'],
   defaultColor: 'light-purple',
   logging: { level: 'info' },
   block: {
@@ -36,7 +36,7 @@ module.exports = {
     ca: '',
     // An HTTP proxy to be used. Supports proxy Auth with Basic Auth, identical to support for
     // the url parameter (by embedding the auth info in the uri)
-    proxy: ""
+    proxy: ''
   },
   options: [
     {

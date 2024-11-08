@@ -3,7 +3,7 @@
   "name": "Fast Incident Response (FIR) Search",
   "acronym": "FIR",
   "description": "Searches Fast Incident Response (FIR) for artifacts contained within cybersecurity incidents.",
-  "entityTypes": ["IPv4", "hash", "domain", "email"],
+  "entityTypes": ["IPv4", "MD5", "SHA1", "SHA256", "domain", "email"],
   "defaultColor": "light-purple",
   "logging": {
     "level": "info"
@@ -17,13 +17,6 @@
     }
   },
   "styles": ["./styles/styles.less"],
-  "request": {
-    "cert": "",
-    "key": "",
-    "passphrase": "",
-    "ca": "",
-    "proxy": ""
-  },
   "options": [
     {
       "key": "url",
